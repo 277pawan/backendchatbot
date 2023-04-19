@@ -5,7 +5,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const dbchannelmodel = require('./schema');
 require('dotenv').config();
 const app = express();
-var whitelist = ['http://localhost:3000', 'https://verdant-sprinkles-4d0463.netlify.app/']
+var whitelist = ['http://localhost:3000', 'https://main--verdant-sprinkles-4d0463.netlify.app/', 'https://main--verdant-sprinkles-4d0463.netlify.app/']
 var corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
