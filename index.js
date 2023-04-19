@@ -5,8 +5,17 @@ const { Configuration, OpenAIApi } = require("openai");
 const dbchannelmodel = require('./schema');
 require('dotenv').config();
 const app = express();
-// jeqwkejqlkw
-app.use(require("cors")());
+var whitelist = ['http://localhost:3000', 'http://example2.com']
+var corsOptions = {
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
+}
+app.use(require("cors")(corsOptions));
 app.use(express.json());
 const Password = process.env.PASSWORD;
 const secret_key = process.env.SECRET_KEY;
