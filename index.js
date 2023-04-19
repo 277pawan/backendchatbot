@@ -5,17 +5,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const dbchannelmodel = require('./schema');
 require('dotenv').config();
 const app = express();
-var whitelist = ['http://localhost:3000', 'https://main--verdant-sprinkles-4d0463.netlify.app/', 'https://main--verdant-sprinkles-4d0463.netlify.app/']
-var corsOptions = {
-    origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
-        }
-    }
-}
-app.use(require("cors")(corsOptions));
+app.use(require("cors")());
 app.use(express.json());
 const Password = process.env.PASSWORD;
 const secret_key = process.env.SECRET_KEY;
